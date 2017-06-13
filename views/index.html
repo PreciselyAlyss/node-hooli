@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--suppress XmlDuplicatedId, XmlDuplicatedId, XmlDuplicatedId -->
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+    <script src="/js/taggle.js"></script>
+    <script src="/js/jBox.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+<body>
+
+<!-- INTERFACE -->
+<header>
+    <a href="."><img src="//cdn6.bigcommerce.com/s-r8lu9/product_images/uploaded_images/bigcommerce-logomark-whitebg.png?t=1468372433"/></a>
+    <div id="search-input"></div>
+</header>
+<main>
+    <div id="left-column">
+        <button id="tag-tooltip">View all tags</button>
+        <div id="tag-hintlist" style="display:none;">
+            <ul></ul>
+        </div>
+        <div class="facets" id="tags-facet"></div>
+        <div class="facets" id="industry"></div>
+        <div class="facets" id="plan"></div>
+	      <div class="facets" id="application_names"></div>
+        <div class="facets" id="themeframework"></div>
+        <div class="facets" id="blueprint-theme"></div>
+    </div>
+    <div id="right-column">
+        <div id="stats"></div>
+        <div id="hits"></div>
+    </div>
+    <footer>
+      <div id="pagination"></div>
+    </footer>
+</main>
+<!-- /INTERFACE -->
+<!-- TEMPLATES -->
+<script type="text/html" id="hit-template">
+        <div class="hit-content">
+            <a target="_blank" href='http://{{{objectID}}}'>
+                <div class="media-object"
+                     style="background-image: url('https://bc-hooli-screenshots.s3.amazonaws.com/{{objectID}}.png');"></div>
+            </a>
+            <div class="hit-info-container">
+            <h2 class="hit-name"><a target="_blank" href='http://{{{objectID}}}'>{{{objectID}}}</a>
+            </h2>
+            <p class="hit-description">{{{_highlightResult.metadesc.value}}}</p>
+            <div id="objectid-hidden">{{{objectID}}}
+            </div>
+            <div id="rating" class="upvote-superuser">
+                <a id="{{{objectID}}}" class="upvote"></a>
+                <div id="votecount-{{{objectID}}}" class="count">{{{votes}}}</div>
+                <a id="{{{objectID}}}" class="downvote"></a>
+            </div>
+          </div>
+            <div class="tags-apps">
+            <div id="tags">
+                <div id="current-tags{{{objectID}}}" style="display:none;">{{{tags}}}</div>
+                <div id="tagslist{{{objectID}}}" class="tags-hidden animated"></div>
+                <button id="{{{objectID}}}" type="button" class="add-tag">Tags</button>
+            </div>
+            <div id="apps">
+              <div id="current-apps{{{objectID}}}" style="display:none;">{{{application_names}}}</div>
+              <button id="{{{objectID}}}" type="button" class="view-apps">Apps</button>
+              <div id="installed-apps{{{objectID}}}" class="apps-hidden animated"></div>
+          </div>
+            </div>
+        </div>
+</script>
+<script type="text/html" id="no-results-template">
+    <div id="no-results-message">
+        <p>We didn't find any results for the search <em>"{{query}}"</em>.</p>
+        <a href="." class='clear-all'>Clear search</a>
+    </div>
+</script>
+<!-- /TEMPLATES -->
+<!-- SCRIPTS -->
+<script src="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+<script src="/js/scripts.js"></script>
+<!-- /SCRIPTS -->
+</body>
+<div id="feedback"><a target="_blank" href="//docs.google.com/a/bigcommerce.com/forms/d/e/1FAIpQLSe5XhhRwuQA7Fep666n7Dew8chpldB9ATugnGrMJBdY5Mc6dw/viewform">Feedback</a>
+</div>
+</html>

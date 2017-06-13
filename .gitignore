@@ -1,0 +1,8 @@
+/node_modules
+.idea
+/csv
+.DS_Store
+/public/css/.DS_Store
+/public/js/.DS_Store
+/views/.DS_Store
+.env
